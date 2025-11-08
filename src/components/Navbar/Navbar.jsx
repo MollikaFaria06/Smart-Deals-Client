@@ -21,6 +21,7 @@ const Navbar = () => {
             </>
         }
     </>;
+    console.log("Current user from context:", user);
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -40,10 +41,14 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{links}</ul>
             </div>
+           
             <div className="navbar-end">
-                {user ? <a onClick={handleSignOut} className='btn'>Sign Out</a> : <Link to="/register">Login</Link>}
+                {user ? <button onClick={handleSignOut} className='btn btn-primary'>Sign Out</button>
+                : <Link to="/register">Login</Link>}
             </div>
         </div>
+        
+
     );
 };
 

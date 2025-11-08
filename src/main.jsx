@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter } from 'react-router-dom';
+import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 import RootLayouts from './Layouts/RootLayouts.jsx';
 import Home from './components/Home/Home.jsx';
@@ -11,6 +12,7 @@ import AuthProvider from './contexts/AuthProvider.jsx';
 import MyProducts from './components/MyProducts/MyProducts.jsx';
 import Register from './components/Register/Register.jsx';
 import MyBids from './components/MyBids/MyBids.jsx';
+import ProductDetails from './components/ProductDetails/ProductDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: 'myBids',
         element: <MyBids></MyBids>
+      },
+      {
+        path: 'productDetails/:id',
+        loader: ({params}) => fetch(`http://localhost:5000/productDetails/${params.id}`),
+        Component: ProductDetails
       }
     ]
   }
